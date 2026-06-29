@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Debrandy Solar Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1410;
+    --ink-soft:#16201B;
+    --cream:#F7F4EC;
+    --cream-dim:#EDE8DA;
+    --amber:#FF8A1E;
+    --amber-dim:#C96A12;
+    --pine:#1B4332;
+    --pine-light:#2D6A4F;
+    --steel:#5C6B63;
+    --steel-light:#8A968F;
+    --line: rgba(247,244,236,0.12);
+    --line-dark: rgba(14,20,16,0.1);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--body);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--amber); color:var(--ink); }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  :focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ===================== PRELOADER ===================== */
+  #preloader{
+    position:fixed; inset:0; z-index:9999;
+    background:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    transition:opacity 0.6s ease, visibility 0.6s ease;
+  }
+  #preloader.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+  .boot-unit{ width:220px; display:flex; flex-direction:column; align-items:center; gap:18px; }
+  .boot-led{ width:10px; height:10px; border-radius:50%; background:var(--steel); transition:background 0.3s, box-shadow 0.3s; }
+  .boot-led.on{ background:var(--amber); box-shadow:0 0 12px 3px rgba(255,138,30,0.65); }
+  .boot-screen{
+    width:100%; height:64px; border:1.5px solid var(--line); border-radius:6px;
+    background:rgba(247,244,236,0.03); display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .boot-bars{ display:flex; align-items:flex-end; gap:4px; height:28px; }
+  .boot-bars span{ width:4px; background:var(--steel-light); height:20%; border-radius:1px; animation:bootcharge 1.4s ease-in-out infinite; }
+  .boot-bars span:nth-child(1){ animation-delay:0s; }
+  .boot-bars span:nth-child(2){ animation-delay:0.12s; }
+  .boot-bars span:nth-child(3){ animation-delay:0.24s; }
+  .boot-bars span:nth-child(4){ animation-delay:0.36s; }
+  .boot-bars span:nth-child(5){ animation-delay:0.48s; }
+  .boot-bars span:nth-child(6){ animation-delay:0.6s; }
+  @keyframes bootcharge{ 0%, 100%{ height:20%; background:var(--steel-light); } 50%{ height:100%; background:var(--amber); } }
+  .boot-label{ font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--steel-light); }
+  .boot-label .pct{ color:var(--amber); }
+
+  /* ===================== NAV ===================== */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:500;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 48px;
+    background:rgba(14,20,16,0.72);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .logo-card{
+    width:42px; height:42px; background:#fff; border-radius:9px;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    box-shadow:0 2px 10px rgba(0,0,0,0.25);
+  }
+  .logo-card img{ width:30px; height:30px; object-fit:contain; }
+  .brand-name{ font-family:var(--display); font-weight:600; font-size:17px; letter-spacing:-0.01em; line-height:1.1; }
+  .brand-name span{ display:block; font-family:var(--mono); font-size:9.5px; letter-spacing:0.16em; color:var(--steel-light); font-weight:400; margin-top:2px; }
+  nav ul{ display:flex; gap:36px; list-style:none; }
+  nav a{ font-size:14px; font-weight:500; color:var(--cream); opacity:0.78; transition:opacity 0.2s; position:relative; }
+  nav a:hover{ opacity:1; }
+  nav a.active{ opacity:1; }
+  nav a.active::after{ content:''; position:absolute; bottom:-6px; left:0; right:0; height:2px; background:var(--amber); border-radius:2px; }
+  .nav-toggle{ display:none; }
+  @media (max-width:880px){
+    header{ padding:16px 20px; }
+    nav ul{ display:none; }
+    .nav-toggle{ display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+    .nav-toggle span{ width:22px; height:2px; background:var(--cream); border-radius:2px; }
+  }
+
+  /* ===================== PAGE HEADER ===================== */
+  .page-header{
+    padding:150px 48px 80px;
+    background:
+      radial-gradient(ellipse 800px 500px at 90% 10%, rgba(27,67,50,0.32), transparent 60%),
+      var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .page-header .container{ max-width:1280px; margin:0 auto; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--amber); padding:7px 14px; border:1px solid rgba(255,138,30,0.35);
+    border-radius:99px; margin-bottom:24px;
+  }
+  .eyebrow::before{ content:''; width:6px; height:6px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px 2px rgba(255,138,30,0.6); }
+  .page-header h1{
+    font-family:var(--display); font-size:clamp(2.2rem, 4vw, 3.4rem);
+    font-weight:700; letter-spacing:-0.02em; line-height:1.08; margin-bottom:20px; max-width:760px;
+  }
+  .page-header p{ font-size:17px; line-height:1.7; color:var(--steel-light); max-width:600px; }
+
+  .container{ max-width:1280px; margin:0 auto; }
+  .section-pad{ padding:100px 48px; }
+  @media (max-width:980px){ .section-pad{ padding:70px 24px; } .page-header{ padding:130px 24px 60px; } }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-weight:600; font-size:14.5px;
+    padding:15px 26px; border-radius:8px;
+    transition:transform 0.2s, background 0.2s, border-color 0.2s;
+  }
+  .btn-primary{ background:var(--amber); color:var(--ink); }
+  .btn-primary:hover{ background:#FFA248; transform:translateY(-2px); }
+  .btn-ghost{ border:1.5px solid var(--line); color:var(--cream); }
+  .btn-ghost:hover{ border-color:var(--steel-light); transform:translateY(-2px); }
+
+  /* ===================== FOUNDER SECTION ===================== */
+  .founder-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;
+  }
+  @media (max-width:980px){ .founder-grid{ grid-template-columns:1fr; gap:40px; } }
+
+  .founder-card{
+    background:linear-gradient(165deg, #182019, #0F1512);
+    border:1px solid var(--line); border-radius:18px;
+    padding:32px;
+    position:relative;
+  }
+  .founder-card::before{
+    content:''; position:absolute; top:14px; right:14px;
+    width:8px; height:8px; border-radius:50%;
+    background:var(--amber); box-shadow:0 0 10px 3px rgba(255,138,30,0.55);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.35; } }
+
+  .founder-card .founder-mark{
+    width:64px; height:64px; border-radius:14px;
+    background:var(--pine);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:700; font-size:24px;
+    margin-bottom:22px;
+  }
+  .founder-card h3{ font-family:var(--display); font-size:21px; font-weight:600; margin-bottom:4px; }
+  .founder-card .founder-role{ font-family:var(--mono); font-size:11.5px; color:var(--steel-light); letter-spacing:0.04em; margin-bottom:24px; display:block; }
+
+  .founder-stats{ display:flex; flex-direction:column; gap:0; border-top:1px solid var(--line); }
+  .founder-stat{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--line); }
+  .founder-stat span{ font-size:13px; color:var(--steel-light); }
+  .founder-stat b{ font-family:var(--mono); font-size:13px; color:var(--cream); font-weight:600; }
+
+  .founder-text .section-tag{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--amber); display:block; margin-bottom:16px;
+  }
+  .founder-text h2{
+    font-family:var(--display); font-size:clamp(1.9rem, 3vw, 2.5rem);
+    font-weight:700; letter-spacing:-0.015em; line-height:1.15; margin-bottom:24px;
+  }
+  .founder-text p{ font-size:16px; line-height:1.8; color:var(--steel-light); margin-bottom:20px; }
+  .founder-text p:last-child{ margin-bottom:0; }
+  .founder-text .pull-quote{
+    font-family:var(--display); font-size:20px; font-weight:600; color:var(--cream);
+    line-height:1.4; border-left:3px solid var(--amber); padding-left:20px; margin:28px 0;
+  }
+
+  /* ===================== WHY ALABA ===================== */
+  .location-wrap{ background:var(--ink-soft); }
+  .location-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+  @media (max-width:980px){ .location-grid{ grid-template-columns:1fr; gap:36px; } }
+
+  .location-wrap .section-tag{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--amber); display:block; margin-bottom:16px;
+  }
+  .location-wrap h2{
+    font-family:var(--display); font-size:clamp(1.8rem, 2.8vw, 2.4rem);
+    font-weight:700; letter-spacing:-0.015em; line-height:1.15; margin-bottom:22px;
+  }
+  .location-wrap .location-text p{ font-size:15.5px; line-height:1.75; color:var(--steel-light); margin-bottom:18px; }
+
+  .map-readout{
+    background:linear-gradient(165deg, #182019, #0F1512);
+    border:1px solid var(--line); border-radius:18px;
+    padding:28px;
+  }
+  .map-readout-head{ font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--steel-light); margin-bottom:20px; }
+  .map-line{ display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); align-items:flex-start; }
+  .map-line:last-child{ border-bottom:none; }
+  .map-line svg{ width:18px; height:18px; color:var(--amber); flex-shrink:0; margin-top:2px; }
+  .map-line div b{ display:block; font-size:14px; color:var(--cream); margin-bottom:2px; }
+  .map-line div span{ font-size:13px; color:var(--steel-light); }
+
+  /* ===================== VALUES ===================== */
+  .values-wrap{ background:var(--cream); color:var(--ink); }
+  .values-wrap .section-head{ max-width:680px; margin-bottom:56px; }
+  .values-wrap .section-tag{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--pine); display:block; margin-bottom:16px;
+  }
+  .values-wrap h2{
+    font-family:var(--display); font-size:clamp(2rem, 3.4vw, 2.9rem);
+    font-weight:700; letter-spacing:-0.015em; line-height:1.1; margin-bottom:18px;
+  }
+  .values-wrap .section-head p{ font-size:16.5px; line-height:1.7; color:var(--steel); }
+
+  .values-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  @media (max-width:980px){ .values-grid{ grid-template-columns:1fr; } }
+
+  .value-card{
+    border:1px solid var(--line-dark); border-radius:16px; padding:30px;
+    background:#fff;
+  }
+  .value-card svg{ width:30px; height:30px; color:var(--pine); margin-bottom:18px; }
+  .value-card h4{ font-family:var(--display); font-size:18px; font-weight:600; margin-bottom:10px; }
+  .value-card p{ font-size:14.5px; color:var(--steel); line-height:1.65; }
+
+  /* ===================== CLOSING CTA ===================== */
+  .about-cta{
+    background:linear-gradient(155deg, var(--pine) 0%, #102D22 100%);
+    border-radius:24px; padding:64px;
+    margin:0 48px;
+    display:grid; grid-template-columns:1.3fr 0.7fr; gap:40px; align-items:center;
+  }
+  @media (max-width:980px){
+    .about-cta{ grid-template-columns:1fr; padding:40px 28px; margin:0 24px; }
+  }
+  .about-cta h2{
+    font-family:var(--display); font-size:clamp(1.8rem, 3vw, 2.4rem);
+    font-weight:700; letter-spacing:-0.01em; margin-bottom:16px;
+  }
+  .about-cta p{ font-size:15.5px; color:rgba(247,244,236,0.78); line-height:1.7; max-width:480px; }
+  .about-cta-actions{ display:flex; flex-direction:column; gap:12px; }
+  .about-cta .btn-primary{ justify-content:center; }
+  .about-cta .btn-ghost{ justify-content:center; border-color:rgba(247,244,236,0.3); color:#F7F4EC; }
+
+  /* ===================== FOOTER ===================== */
+  footer{ background:#0A0F0C; padding:64px 48px 32px; border-top:1px solid var(--line); }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px; margin-bottom:48px; }
+  @media (max-width:780px){ .footer-grid{ grid-template-columns:1fr; gap:36px; } }
+  .footer-brand p{ font-size:14px; color:var(--steel-light); line-height:1.7; max-width:340px; margin-top:16px; }
+  .footer-col h5{ font-family:var(--mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel-light); margin-bottom:18px; }
+  .footer-col ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .footer-col a{ font-size:14px; color:var(--cream); opacity:0.82; transition:opacity 0.2s; }
+  .footer-col a:hover{ opacity:1; color:var(--amber); }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:28px; border-top:1px solid var(--line);
+    font-size:12.5px; color:var(--steel-light); flex-wrap:wrap; gap:12px;
+  }
+  .footer-bottom .mono-bit{ font-family:var(--mono); }
+
+  /* ===================== FLOATING WHATSAPP ===================== */
+  .float-whatsapp{
+    position:fixed; bottom:26px; right:26px; z-index:600;
+    width:58px; height:58px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px -6px rgba(0,0,0,0.45);
+    transition:transform 0.2s ease;
+  }
+  .float-whatsapp svg{ width:30px; height:30px; color:#fff; }
+  .float-whatsapp:hover{ transform:scale(1.08); }
+  .float-whatsapp::before{
+    content:''; position:absolute; inset:0; border-radius:50%; background:#25D366;
+    opacity:0.55; animation:wa-pulse 2.4s ease-out infinite; z-index:-1;
+  }
+  @keyframes wa-pulse{ 0%{ transform:scale(1); opacity:0.55; } 100%{ transform:scale(1.7); opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .float-whatsapp::before{ animation:none; display:none; } }
+  @media (max-width:600px){
+    .float-whatsapp{ bottom:18px; right:18px; width:52px; height:52px; }
+    .float-whatsapp svg{ width:26px; height:26px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="boot-unit">
+    <div class="boot-led" id="bootLed"></div>
+    <div class="boot-screen">
+      <div class="boot-bars">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="boot-label">POWERING ON <span class="pct" id="bootPct">0%</span></div>
+  </div>
+</div>
+
+<header>
+  <a class="brand" href="index.html" style="cursor:pointer;">
+    <div class="logo-card">
+      <img src="assets/logo.png" alt="Debrandy Solar Solutions logo" onerror="this.parentElement.innerHTML='<span style=\'font-family:Space Grotesk;font-weight:700;color:#0E1410;font-size:18px;\'>D</span>'">
+    </div>
+    <div class="brand-name">
+      Debrandy Solar
+      <span>SOLUTIONS · LAGOS</span>
+    </div>
+  </a>
+  <nav>
+    <ul>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="installation.html">Installation</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+
+<main>
+
+  <section class="page-header">
+    <div class="container">
+      <div class="eyebrow">About Debrandy</div>
+      <h1>Built by someone who treats your power supply like an engineering problem, not a sale.</h1>
+      <p>Debrandy Solar Solutions started with a simple frustration — watching homes and businesses get sold the wrong system, then pay for it in shutdowns and dead batteries. We do it differently.</p>
+    </div>
+  </section>
+
+  <section class="section-pad">
+    <div class="container founder-grid">
+      <div class="founder-card">
+        <div class="founder-mark">JS</div>
+        <h3>Jeremiah Augustine Solomon</h3>
+        <span class="founder-role">FOUNDER · DEBRANDY SOLAR SOLUTIONS</span>
+        <div class="founder-stats">
+          <div class="founder-stat"><span>Based at</span><b>Alaba Int'l Market</b></div>
+          <div class="founder-stat"><span>Focus</span><b>System design &amp; supply</b></div>
+          <div class="founder-stat"><span>Approach</span><b>Load-first sizing</b></div>
+          <div class="founder-stat"><span>Reach</span><b>Lagos &amp; beyond</b></div>
+        </div>
+      </div>
+
+      <div class="founder-text">
+        <span class="section-tag">The founder</span>
+        <h2>"Good solar is not about quantity. It is about engineering."</h2>
+        <p>Jeremiah founded Debrandy Solar Solutions on a belief that's simple to say and easy to skip in practice: a solar system should be built around what you actually need to power, not around how many panels look impressive on a roof.</p>
+        <p>That belief came from watching the industry get it backwards too often — installers stacking panels without checking if the battery could store what they generate, or selling inverters that buckle the moment a fridge and AC run at once. The result is systems that look complete on day one and fail within months.</p>
+        <div class="pull-quote">"A well-designed 6kVA system can outperform a poorly planned 10kVA setup when the architecture is right."</div>
+        <p>Every battery delivered to a client is inspected before it leaves Alaba — checked for performance and safety, not just packaged and sent. That's the standard the business runs on: not just selling equipment, but delivering power people can actually trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="location-wrap section-pad">
+    <div class="container location-grid">
+      <div class="location-text">
+        <span class="section-tag">Why Alaba</span>
+        <h2>Lagos's biggest import hub, with engineering on top of it.</h2>
+        <p>Alaba International Market is where most of Lagos sources its electronics and power equipment — which means competitive pricing and constant stock. But sourcing is only half the job.</p>
+        <p>Debrandy adds the part that's usually missing at that price point: proper load assessment, honest sizing, and an engineer who inspects every unit before it reaches you. You get market access and consultancy-level care in one place.</p>
+      </div>
+
+      <div class="map-readout">
+        <div class="map-readout-head">FIND US</div>
+        <div class="map-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div><b>Alaba International Market</b><span>By St. Patrick bus stop, Lagos</span></div>
+        </div>
+        <div class="map-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div><b>0701 887 4475</b><span>Call or WhatsApp</span></div>
+        </div>
+        <div class="map-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <div><b>Email</b><span>Jeremiahchukwuezugosolomon@gmail.com</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-wrap section-pad">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">What we stand on</span>
+        <h2>The standards we don't bend on.</h2>
+        <p>These aren't marketing lines — they're the actual checks every job goes through before it reaches you.</p>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 11l3 3L22 4M2 12l9 9 11-11"/></svg>
+          <h4>Honest sizing, every time</h4>
+          <p>We'd rather tell you a smaller system is enough than oversell you one you don't need.</p>
+        </div>
+        <div class="value-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg>
+          <h4>Inspected before delivery</h4>
+          <p>Every battery and inverter is checked for performance and safety before it reaches a client.</p>
+        </div>
+        <div class="value-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H4v-2a4 4 0 0 1 3-3.87m5-5.13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+          <h4>Power for everyone</h4>
+          <p>From single households to growing businesses — and we're proud of the women leading and innovating in clean energy alongside us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:70px;">
+    <div class="about-cta">
+      <div>
+        <span class="section-tag" style="color:#9FD8C0;">Let's talk about your power</span>
+        <h2>Ready to stop guessing and start planning?</h2>
+        <p>Whether it's one power tank for your apartment or a full hybrid system for your business, we'll give you a straight answer on what you actually need.</p>
+      </div>
+      <div class="about-cta-actions">
+        <a class="btn btn-primary" href="https://wa.me/2347018874475?text=Hi%20Debrandy%2C%20I%27d%20like%20to%20know%20more%20about%20your%20solar%20solutions" target="_blank" rel="noopener">Chat with us on WhatsApp</a>
+        <a class="btn btn-ghost" href="contact.html" style="color:#F7F4EC;">View contact details</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="index.html" style="cursor:pointer;">
+        <div class="logo-card">
+          <img src="assets/logo.png" alt="Debrandy Solar Solutions logo" onerror="this.parentElement.innerHTML='<span style=\'font-family:Space Grotesk;font-weight:700;color:#0E1410;font-size:18px;\'>D</span>'">
+        </div>
+        <div class="brand-name">Debrandy Solar<span>SOLUTIONS · LAGOS</span></div>
+      </a>
+      <p>Powering your world, securing your space. Solar generators, power tanks and engineered hybrid systems — supplied and installed from Alaba International Market, Lagos.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="installation.html">Installation</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Reach us</h5>
+      <ul>
+        <li><a href="tel:+2347018874475">0701 887 4475</a></li>
+        <li><a href="mailto:Jeremiahchukwuezugosolomon@gmail.com">Email us</a></li>
+        <li><a href="https://wa.me/2347018874475" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://www.instagram.com/debrandysolarsolutions" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Debrandy Solar Solutions. All rights reserved.</span>
+    <span class="mono-bit">ALABA INTERNATIONAL MARKET, LAGOS</span>
+  </div>
+</footer>
+
+<a class="float-whatsapp" href="https://wa.me/2347018874475?text=Hi%20Debrandy%2C%20I%27d%20like%20to%20know%20more%20about%20your%20solar%20solutions" target="_blank" rel="noopener" aria-label="Chat with Debrandy Solar on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.74 1.52 5.27L2 22l4.96-1.6a9.8 9.8 0 0 0 5.08 1.4c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.6 14.1c-.24.67-1.4 1.28-1.93 1.36-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.16-4.93-4.36-.14-.2-1.18-1.57-1.18-2.99 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36h.56c.18 0 .42-.02.65.5.27.6.92 2.11.99 2.27.08.16.13.34.02.55-.1.2-.16.33-.31.5-.16.18-.33.4-.47.54-.16.16-.32.33-.14.65.18.32.83 1.36 1.78 2.2 1.22 1.09 2.26 1.43 2.6 1.59.34.16.54.13.74-.08.2-.21.85-.99 1.08-1.33.23-.34.46-.28.77-.17.31.11 1.97.93 2.31 1.1.34.16.56.25.65.39.08.14.08.78-.16 1.45z"/></svg>
+</a>
+
+<script>
+  // Power-on preloader sequence
+  (function(){
+    const led = document.getElementById('bootLed');
+    const pct = document.getElementById('bootPct');
+    const preloader = document.getElementById('preloader');
+    let n = 0;
+    const blink = setInterval(() => { led.classList.toggle('on'); }, 280);
+
+    const tick = setInterval(() => {
+      n += Math.floor(Math.random() * 14) + 6;
+      if(n >= 100){
+        n = 100;
+        clearInterval(tick);
+        clearInterval(blink);
+        led.classList.add('on');
+        setTimeout(() => {
+          preloader.classList.add('hidden');
+          document.body.style.overflow = '';
+        }, 320);
+      }
+      pct.textContent = n + '%';
+    }, 160);
+
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 3200);
+  })();
+
+  // mobile nav toggle
+  document.querySelector('.nav-toggle')?.addEventListener('click', function(){
+    const ul = document.querySelector('nav ul');
+    const open = ul.style.display === 'flex';
+    if(open){
+      ul.style.display = 'none';
+    } else {
+      ul.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(14,20,16,0.97);padding:24px;gap:20px;border-bottom:1px solid var(--line);';
+    }
+  });
+</script>
+
+</body>
+</html>
