@@ -375,6 +375,56 @@
     display:flex; align-items:center; gap:12px;
   }
   .industry-tag svg{ width:18px; height:18px; color:var(--amber); flex-shrink:0; }
+
+  /* ===================== CATALOG DETAIL (wattages / accessories) ===================== */
+  .catalog-wrap{ background:var(--ink); }
+  .catalog-group{ margin-bottom:56px; }
+  .catalog-group:last-child{ margin-bottom:0; }
+  .catalog-group-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:24px;
+    padding-bottom:16px;
+    border-bottom:1px solid var(--line);
+  }
+  .catalog-group-head h3{
+    font-family:var(--display); font-size:20px; font-weight:600;
+  }
+  .catalog-group-head span{
+    font-family:var(--mono); font-size:11.5px; color:var(--steel-light);
+  }
+  .catalog-subgrid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  }
+  @media (max-width:980px){ .catalog-subgrid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:640px){ .catalog-subgrid{ grid-template-columns:1fr; } }
+
+  .catalog-card{
+    border:1px solid var(--line); border-radius:14px;
+    padding:24px;
+    background:rgba(247,244,236,0.03);
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .catalog-card h4{
+    font-family:var(--display); font-size:15.5px; font-weight:600;
+  }
+  .catalog-card .catalog-note{
+    font-size:12.5px; color:var(--steel-light); line-height:1.55;
+  }
+  .catalog-card .catalog-tags{
+    display:flex; flex-wrap:wrap; gap:6px;
+  }
+  .catalog-card .catalog-tags span{
+    font-family:var(--mono); font-size:10.5px; color:var(--steel-light);
+    background:rgba(247,244,236,0.05);
+    border:1px solid var(--line);
+    padding:4px 9px; border-radius:6px;
+  }
+  .catalog-card .catalog-link{
+    margin-top:auto; display:flex; align-items:center; gap:6px;
+    font-weight:600; font-size:12.5px; color:var(--amber);
+  }
+  .catalog-card .catalog-link svg{ width:13px; height:13px; }
 </style>
 </head>
 <body>
@@ -644,6 +694,222 @@
     </div>
   </section>
 
+  <!-- FULL SPEC CATALOG: Panels, Inverters, Batteries, Kits, Accessories -->
+  <section class="catalog-wrap section-pad" id="full-catalog">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Full spec sheet</span>
+        <h2>Every wattage, voltage &amp; kit we supply.</h2>
+        <p>A closer look at what sits inside each category above. If you already know roughly what you need, tap through to WhatsApp — if not, tell us your appliances and we'll match you to the right line.</p>
+      </div>
+
+      <!-- Solar Panels -->
+      <div class="catalog-group">
+        <div class="catalog-group-head">
+          <h3>Solar Panels</h3>
+          <span>100W — 700W+</span>
+        </div>
+        <div class="catalog-subgrid">
+          <div class="catalog-card">
+            <h4>Panel Types</h4>
+            <div class="catalog-tags">
+              <span>Monocrystalline</span><span>Polycrystalline</span><span>Bifacial</span><span>N-Type</span><span>P-Type</span><span>Half-cell</span>
+            </div>
+            <p class="catalog-note">Standard rooftop and ground-mount panels for homes and commercial sites.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20solar%20panels" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Portable &amp; Flexible Panels</h4>
+            <div class="catalog-tags">
+              <span>Flexible</span><span>Portable</span><span>100W–200W</span>
+            </div>
+            <p class="catalog-note">Lightweight panels for pairing with power tanks, camping, or supplementary charging.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20portable%20solar%20panels" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Wattage Range</h4>
+            <div class="catalog-tags">
+              <span>100W</span><span>200W</span><span>300W</span><span>400W</span><span>450W</span><span>550W</span><span>580W</span><span>600W</span><span>610W</span><span>620W</span><span>635W</span><span>650W</span><span>700W+</span>
+            </div>
+            <p class="catalog-note">Higher wattage panels reduce the number of panels needed for the same output.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27d%20like%20help%20picking%20a%20panel%20wattage" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hybrid Inverters -->
+      <div class="catalog-group">
+        <div class="catalog-group-head">
+          <h3>Hybrid Inverters</h3>
+          <span>1kVA — 200kW+</span>
+        </div>
+        <div class="catalog-subgrid">
+          <div class="catalog-card">
+            <h4>Low Voltage (Homes)</h4>
+            <div class="catalog-tags">
+              <span>1kVA</span><span>2kVA</span><span>3kVA</span><span>3.5kVA</span><span>5kVA</span><span>6kVA</span><span>8kVA</span><span>10kVA</span><span>12kVA</span><span>15kVA</span>
+            </div>
+            <p class="catalog-note">Right-sized for apartments, duplexes, and single households.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20a%20low%20voltage%20hybrid%20inverter" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>High Voltage (Commercial)</h4>
+            <div class="catalog-tags">
+              <span>20kW</span><span>30kW</span><span>40kW</span><span>50kW</span><span>60kW</span><span>80kW</span><span>100kW</span><span>120kW</span><span>150kW</span><span>200kW+</span>
+            </div>
+            <p class="catalog-note">For hotels, hospitals, factories, schools, malls, and estates.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20a%20high%20voltage%20hybrid%20inverter" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Three-Phase Systems</h4>
+            <div class="catalog-tags">
+              <span>Hotels</span><span>Hospitals</span><span>Factories</span><span>Schools</span><span>Malls</span><span>Estates</span>
+            </div>
+            <p class="catalog-note">Balanced three-phase power for continuous heavy commercial and industrial loads.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20a%20three-phase%20hybrid%20inverter" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Off-Grid Inverters</h4>
+            <div class="catalog-tags">
+              <span>Pure sine wave</span><span>Modified sine wave</span><span>Industrial off-grid</span>
+            </div>
+            <p class="catalog-note">Fully independent from the national grid — for sites where grid access is unreliable or absent.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20an%20off-grid%20inverter" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>On-Grid Inverters</h4>
+            <div class="catalog-tags">
+              <span>Residential</span><span>Commercial</span><span>Industrial</span>
+            </div>
+            <p class="catalog-note">Feed solar output directly alongside grid power for sites that stay grid-connected.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20an%20on-grid%20inverter" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solar Batteries -->
+      <div class="catalog-group">
+        <div class="catalog-group-head">
+          <h3>Solar Batteries</h3>
+          <span>2.5kWh — 30kWh+</span>
+        </div>
+        <div class="catalog-subgrid">
+          <div class="catalog-card">
+            <h4>Lithium — Low Voltage</h4>
+            <div class="catalog-tags">
+              <span>12V</span><span>24V</span><span>48V</span><span>Stackable</span>
+            </div>
+            <p class="catalog-note">Capacities from 2.5kWh–30kWh, stackable for expansion as your load grows.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20a%20low%20voltage%20lithium%20battery" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Lithium — High Voltage</h4>
+            <div class="catalog-tags">
+              <span>Battery racks</span><span>Battery cabinets</span><span>Modular systems</span>
+            </div>
+            <p class="catalog-note">For commercial projects: hotels, factories, hospitals, and large estates.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20a%20high%20voltage%20lithium%20battery%20system" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Lead Acid</h4>
+            <div class="catalog-tags">
+              <span>Tubular</span><span>AGM</span><span>Gel</span><span>Flooded</span>
+            </div>
+            <p class="catalog-note">A lower-cost entry point for budget-conscious installations.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20lead%20acid%20batteries" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Rechargeable Batteries</h4>
+            <div class="catalog-tags">
+              <span>Lithium rechargeable</span><span>Lead-acid rechargeable</span><span>UPS batteries</span>
+            </div>
+            <p class="catalog-note">Backup cells for UPS units and smaller standalone power needs.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20rechargeable%20batteries" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Complete Solar Kits -->
+      <div class="catalog-group">
+        <div class="catalog-group-head">
+          <h3>Complete Solar Kits</h3>
+          <span>Panels + inverter + battery, bundled</span>
+        </div>
+        <div class="catalog-subgrid">
+          <div class="catalog-card">
+            <h4>Home Solar Kits</h4>
+            <div class="catalog-tags">
+              <span>1-bedroom</span><span>2-bedroom</span><span>3-bedroom</span><span>Duplex</span><span>Mansion</span>
+            </div>
+            <p class="catalog-note">Bundled kits matched to typical home sizes — a faster route than sourcing components separately.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20a%20home%20solar%20kit" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Business Solar Kits</h4>
+            <div class="catalog-tags">
+              <span>Shops</span><span>Offices</span><span>Hotels</span><span>Schools</span><span>Churches</span><span>Mosques</span><span>Farms</span><span>Hospitals</span>
+            </div>
+            <p class="catalog-note">Sized to commercial and institutional loads, with room to scale as operations grow.</p>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20a%20business%20solar%20kit" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accessories -->
+      <div class="catalog-group">
+        <div class="catalog-group-head">
+          <h3>Accessories &amp; Electrical Materials</h3>
+          <span>Everything a proper install needs beyond the core three</span>
+        </div>
+        <div class="catalog-subgrid">
+          <div class="catalog-card">
+            <h4>Mounting Structures</h4>
+            <div class="catalog-tags">
+              <span>Roof mounts</span><span>Ground mounts</span><span>Pole mounts</span><span>Aluminum rails</span><span>Clamps</span><span>Brackets</span>
+            </div>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20mounting%20structures" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>DC Accessories</h4>
+            <div class="catalog-tags">
+              <span>DC breakers</span><span>DC fuse</span><span>Fuse holders</span><span>SPD</span><span>MC4 connectors</span><span>Junction boxes</span><span>Isolators</span><span>Combiner boxes</span>
+            </div>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20DC%20accessories" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>AC Accessories</h4>
+            <div class="catalog-tags">
+              <span>AC breakers</span><span>Changeover switches</span><span>MCCB</span><span>MCB</span><span>RCCB</span><span>RCBO</span><span>Surge protectors</span>
+            </div>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20AC%20accessories" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Cables</h4>
+            <div class="catalog-tags">
+              <span>Solar cable</span><span>Battery cable</span><span>AC cable</span><span>Armoured cable</span><span>Flexible cable</span>
+            </div>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20solar%20cables" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Monitoring</h4>
+            <div class="catalog-tags">
+              <span>WiFi dongles</span><span>GSM monitoring</span><span>Smart energy meters</span><span>Remote monitoring</span>
+            </div>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20solar%20monitoring%20systems" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="catalog-card">
+            <h4>Electrical Materials</h4>
+            <div class="catalog-tags">
+              <span>Distribution boards</span><span>Meter boxes</span><span>Cable trays</span><span>Trunking</span><span>Conduits</span>
+            </div>
+            <a class="catalog-link" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20electrical%20materials" target="_blank" rel="noopener">Ask on WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- BRANDS WE DEAL IN -->
   <section class="brands-wrap section-pad">
     <div class="container">
@@ -713,11 +979,15 @@
         <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>Homes &amp; Estates</div>
         <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6"/></svg>Hotels</div>
         <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 7h-3V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h6"/></svg>Hospitals</div>
-        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Schools</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Schools &amp; Universities</div>
         <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 5h5l-4 4 2 6-6-4-6 4 2-6-4-4h5z"/></svg>Churches &amp; Mosques</div>
-        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 21h20M5 21V11l4-4 4 4v10M13 21V7l4-4 4 4v14"/></svg>Factories</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 21h20M5 21V11l4-4 4 4v10M13 21V7l4-4 4 4v14"/></svg>Factories &amp; Warehouses</div>
         <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M8 6V4h8v2"/></svg>Shops &amp; Offices</div>
         <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>Farms</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 21V7a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v14"/><path d="M12 3v3"/></svg>Banks</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>Petrol Stations</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M4 21V10l8-6 8 6v11M9 21v-5h6v5"/></svg>Government Buildings</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M6 21V10l6-6 6 6v11"/><path d="M9 21v-6h6v6"/></svg>Restaurants</div>
       </div>
     </div>
   </section>
