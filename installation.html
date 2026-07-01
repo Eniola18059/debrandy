@@ -216,6 +216,32 @@
   .included-card h4{ font-family:var(--display); font-size:17px; font-weight:600; margin-bottom:10px; }
   .included-card p{ font-size:14.5px; color:var(--steel-light); line-height:1.65; }
 
+  /* ===================== SCALE / INDUSTRIES ===================== */
+  .scale-wrap{ background:var(--cream); color:var(--ink); }
+  .scale-wrap .section-tag{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--pine); display:block; margin-bottom:16px;
+  }
+  .scale-wrap h2{
+    font-family:var(--display); font-size:clamp(1.9rem, 3vw, 2.5rem);
+    font-weight:700; letter-spacing:-0.015em; line-height:1.15; margin-bottom:16px;
+  }
+  .scale-wrap > .container > .section-head > p{ font-size:16px; color:var(--steel); line-height:1.7; }
+
+  .scale-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  @media (max-width:980px){ .scale-grid{ grid-template-columns:1fr; } }
+
+  .scale-card{
+    border:1px solid var(--line-dark); border-radius:16px; padding:28px;
+    background:#fff;
+  }
+  .scale-card .scale-tag{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--pine); margin-bottom:12px; display:block;
+  }
+  .scale-card h4{ font-family:var(--display); font-size:17px; font-weight:600; margin-bottom:10px; }
+  .scale-card p{ font-size:14px; color:var(--steel); line-height:1.65; }
+
   /* ===================== CONSULTATION CTA ===================== */
   .consult-cta{
     background:linear-gradient(155deg, var(--pine) 0%, #102D22 100%);
@@ -441,6 +467,34 @@
     </div>
   </section>
 
+  <section class="scale-wrap section-pad">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Built to scale</span>
+        <h2>From a single room to a full facility.</h2>
+        <p>The same load-first approach applies whether it's one apartment or an entire site — only the numbers change.</p>
+      </div>
+
+      <div class="scale-grid">
+        <div class="scale-card">
+          <span class="scale-tag">Residential</span>
+          <h4>Homes &amp; estates</h4>
+          <p>1kVA–15kVA hybrid systems sized to apartments, duplexes, and full estates — low voltage inverters with lithium or lead-acid battery banks.</p>
+        </div>
+        <div class="scale-card">
+          <span class="scale-tag">Commercial</span>
+          <h4>Hotels, shops &amp; offices</h4>
+          <p>Higher-capacity hybrid and three-phase systems built to handle continuous commercial loads without compromise.</p>
+        </div>
+        <div class="scale-card">
+          <span class="scale-tag">Industrial</span>
+          <h4>Factories &amp; institutions</h4>
+          <p>High-voltage inverters from 20kW–200kW+ for factories, hospitals, schools, and large facilities with serious power demands.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section-pad" style="padding-top:70px;">
     <div class="consult-cta">
       <div>
@@ -462,7 +516,7 @@
     <div class="footer-brand">
       <a class="brand" href="index.html" style="cursor:pointer;">
         <div class="logo-card">
-          <img src="assets/logo.png" alt="Debrandy Solar Solutions logo" onerror="this.parentElement.innerHTML='<span style=\'font-family:Space Grotesk;font-weight:700;color:#0E1410;font-size:18px;\'>D</span>'">
+          <img src="logo.png" alt="Debrandy Solar Solutions logo" onerror="this.parentElement.innerHTML='<span style=\'font-family:Space Grotesk;font-weight:700;color:#0E1410;font-size:18px;\'>D</span>'">
         </div>
         <div class="brand-name">Debrandy Solar<span>SOLUTIONS · LAGOS</span></div>
       </a>
