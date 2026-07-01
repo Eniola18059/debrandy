@@ -305,10 +305,76 @@
   }
   @keyframes wa-pulse{ 0%{ transform:scale(1); opacity:0.55; } 100%{ transform:scale(1.7); opacity:0; } }
   @media (prefers-reduced-motion: reduce){ .float-whatsapp::before{ animation:none; display:none; } }
-  @media (max-width:600px){
-    .float-whatsapp{ bottom:18px; right:18px; width:52px; height:52px; }
-    .float-whatsapp svg{ width:26px; height:26px; }
+  /* ===================== CATEGORY INTRO ===================== */
+  .category-intro{ padding:0 48px 50px; }
+  .category-intro .container{ border-top:1px solid var(--line); padding-top:50px; }
+  @media (max-width:980px){ .category-intro{ padding:0 24px 40px; } }
+
+  /* ===================== CATEGORY CARDS GRID ===================== */
+  .category-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  @media (max-width:980px){ .category-grid{ grid-template-columns:1fr; } }
+
+  .category-card{
+    border:1px solid var(--line); border-radius:16px;
+    padding:32px 28px;
+    background:rgba(247,244,236,0.03);
+    display:flex; flex-direction:column; gap:18px;
+    transition:transform 0.2s, border-color 0.2s;
   }
+  .category-card:hover{ transform:translateY(-4px); border-color:var(--steel-light); }
+  .category-card .cat-icon{
+    width:50px; height:50px; border-radius:12px;
+    background:var(--pine); display:flex; align-items:center; justify-content:center;
+  }
+  .category-card .cat-icon svg{ width:24px; height:24px; color:var(--cream); }
+  .category-card h3{ font-family:var(--display); font-size:19px; font-weight:600; }
+  .category-card .cat-range{ font-family:var(--mono); font-size:12px; color:var(--amber); }
+  .category-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .category-card ul li{ font-size:13.5px; color:var(--steel-light); padding-left:16px; position:relative; }
+  .category-card ul li::before{ content:'—'; position:absolute; left:0; color:var(--steel); }
+  .category-card .cat-cta{
+    margin-top:auto; display:flex; align-items:center; gap:8px;
+    font-weight:600; font-size:13.5px; color:var(--amber);
+  }
+
+  /* ===================== BRANDS ===================== */
+  .brands-wrap{ background:var(--cream); color:var(--ink); }
+  .brands-wrap .section-tag{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase;
+    color:var(--pine); display:block; margin-bottom:16px;
+  }
+  .brands-wrap h2{
+    font-family:var(--display); font-size:clamp(1.9rem, 3vw, 2.5rem);
+    font-weight:700; letter-spacing:-0.015em; line-height:1.15; margin-bottom:14px;
+  }
+  .brands-wrap > .container > p{ font-size:16px; color:var(--steel); line-height:1.7; max-width:600px; margin-bottom:48px; }
+
+  .brand-category{ margin-bottom:36px; }
+  .brand-category:last-child{ margin-bottom:0; }
+  .brand-category h4{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--steel); margin-bottom:16px;
+  }
+  .brand-pills{ display:flex; flex-wrap:wrap; gap:10px; }
+  .brand-pill{
+    font-family:var(--display); font-weight:600; font-size:14px;
+    border:1px solid var(--line-dark); border-radius:10px;
+    padding:12px 18px; background:#fff; color:var(--ink);
+  }
+  .brand-pill.featured{ background:var(--pine); color:#fff; border-color:var(--pine); }
+
+  /* ===================== INDUSTRIES ===================== */
+  .industries-wrap{ background:var(--ink-soft); }
+  .industries-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; }
+  @media (max-width:900px){ .industries-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:560px){ .industries-grid{ grid-template-columns:1fr; } }
+
+  .industry-tag{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px;
+    font-size:14px; font-weight:500; color:var(--cream);
+    display:flex; align-items:center; gap:12px;
+  }
+  .industry-tag svg{ width:18px; height:18px; color:var(--amber); flex-shrink:0; }
 </style>
 </head>
 <body>
@@ -351,8 +417,72 @@
   <section class="page-header">
     <div class="container">
       <div class="eyebrow">Products</div>
-      <h1>Pick by what you need to power — not by what looks impressive.</h1>
-      <p>Every unit here is something we stock, test, and stand behind. Each one suits a different load. Find yours below, or message us your appliances and we'll tell you straight.</p>
+      <h1>Panels, inverters, batteries, and generators — sized to your load, not sold off a shelf.</h1>
+      <p>From a single power tank for an apartment to a three-phase hybrid system for a factory, every category below is something we supply and install. Message us your appliances and we'll tell you exactly what fits.</p>
+    </div>
+  </section>
+
+  <section class="category-intro section-pad" style="padding-bottom:0;">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:48px;">
+        <span class="section-tag">Full catalog</span>
+        <h2>Browse by category.</h2>
+        <p>Each category covers a range of sizes and brands. Tell us your load and we'll recommend the exact spec — we don't expect you to know the right kVA or kWh upfront.</p>
+      </div>
+
+      <div class="category-grid">
+        <a class="category-card" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20solar%20panels" target="_blank" rel="noopener">
+          <div class="cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M3 8h18M3 12h18M9 4v12M15 4v12" stroke-width="1"/><path d="M12 16v4M8 20h8"/></svg>
+          </div>
+          <h3>Solar Panels</h3>
+          <span class="cat-range">100W — 700W+</span>
+          <ul>
+            <li>Monocrystalline &amp; polycrystalline</li>
+            <li>Bifacial &amp; N-Type panels</li>
+            <li>Half-cell &amp; portable panels</li>
+          </ul>
+          <span class="cat-cta">Ask about panels <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="category-card" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20hybrid%20inverters" target="_blank" rel="noopener">
+          <div class="cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+          </div>
+          <h3>Hybrid Inverters</h3>
+          <span class="cat-range">1kVA — 200kW+</span>
+          <ul>
+            <li>Low voltage: 1kVA – 15kVA homes</li>
+            <li>High voltage &amp; three-phase: hotels, factories</li>
+            <li>Off-grid &amp; on-grid options</li>
+          </ul>
+          <span class="cat-cta">Ask about inverters <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+
+        <a class="category-card" href="https://wa.me/2347018874475?text=Hi%2C%20I%27m%20interested%20in%20solar%20batteries" target="_blank" rel="noopener">
+          <div class="cat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 10v4" stroke-width="2"/><path d="M6 11v2M10 11v2M14 11v2" stroke-width="1.5"/></svg>
+          </div>
+          <h3>Solar Batteries</h3>
+          <span class="cat-range">2.5kWh — 30kWh+</span>
+          <ul>
+            <li>Lithium: 12V, 24V, 48V, stackable</li>
+            <li>High-voltage racks for commercial sites</li>
+            <li>Tubular, AGM &amp; gel options</li>
+          </ul>
+          <span class="cat-cta">Ask about batteries <svg style="width:14px;height:14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-bottom:50px;">
+    <div class="container">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="section-tag">Ready-to-go units</span>
+        <h2>Power Tanks &amp; Solar Generators</h2>
+        <p>Our most popular all-in-one units — no installation needed, just plug in and run.</p>
+      </div>
     </div>
   </section>
 
@@ -514,7 +644,85 @@
     </div>
   </section>
 
-  <section class="section-pad" style="padding-top:80px;">
+  <!-- BRANDS WE DEAL IN -->
+  <section class="brands-wrap section-pad">
+    <div class="container">
+      <span class="section-tag">Trusted suppliers</span>
+      <h2>Brands we deal in.</h2>
+      <p>We source from established, proven manufacturers — and stand behind every unit we install with that backing.</p>
+
+      <div class="brand-category">
+        <h4>Power Tanks &amp; Generators</h4>
+        <div class="brand-pills">
+          <span class="brand-pill featured">Itel Energy</span>
+          <span class="brand-pill featured">ColaSolar</span>
+          <span class="brand-pill">Taico</span>
+          <span class="brand-pill">SAKO</span>
+        </div>
+      </div>
+
+      <div class="brand-category">
+        <h4>Solar Panels</h4>
+        <div class="brand-pills">
+          <span class="brand-pill">Jinko Solar</span>
+          <span class="brand-pill">Canadian Solar</span>
+          <span class="brand-pill">LONGi Solar</span>
+          <span class="brand-pill">JA Solar</span>
+          <span class="brand-pill">Trina Solar</span>
+        </div>
+      </div>
+
+      <div class="brand-category">
+        <h4>Hybrid Inverters</h4>
+        <div class="brand-pills">
+          <span class="brand-pill">Deye</span>
+          <span class="brand-pill">Growatt</span>
+          <span class="brand-pill">Felicity Solar</span>
+          <span class="brand-pill">SRNE</span>
+          <span class="brand-pill">Sunsynk</span>
+          <span class="brand-pill">Huawei</span>
+          <span class="brand-pill">GoodWe</span>
+          <span class="brand-pill">Victron Energy</span>
+          <span class="brand-pill">SMA</span>
+          <span class="brand-pill">Must Energy</span>
+          <span class="brand-pill">Haisic</span>
+        </div>
+      </div>
+
+      <div class="brand-category">
+        <h4>Lithium Batteries</h4>
+        <div class="brand-pills">
+          <span class="brand-pill">Livoltek</span>
+          <span class="brand-pill">Dyness</span>
+          <span class="brand-pill">Pylontech</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES WE SERVE -->
+  <section class="industries-wrap section-pad">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Beyond homes</span>
+        <h2>Industries we serve.</h2>
+        <p>Residential is where most people start, but our installations scale to commercial and industrial sites too.</p>
+      </div>
+
+      <div class="industries-grid">
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg>Homes &amp; Estates</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6"/></svg>Hotels</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 7h-3V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M9 12h6"/></svg>Hospitals</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Schools</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 5h5l-4 4 2 6-6-4-6 4 2-6-4-4h5z"/></svg>Churches &amp; Mosques</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 21h20M5 21V11l4-4 4 4v10M13 21V7l4-4 4 4v14"/></svg>Factories</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M8 6V4h8v2"/></svg>Shops &amp; Offices</div>
+        <div class="industry-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M7 12h10"/></svg>Farms</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:70px;">
     <div class="unsure-cta">
       <div>
         <span class="use-case-tag" style="color:#9FD8C0;">Still not sure?</span>
