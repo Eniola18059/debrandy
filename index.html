@@ -228,6 +228,23 @@
   }
   .hero h1 .accent{ color:var(--amber); }
 
+  .tw-cursor{
+    display:inline-block;
+    width:3px;
+    background:var(--amber);
+    margin-left:3px;
+    height:0.82em;
+    vertical-align:-0.08em;
+    animation:tw-blink 0.85s step-end infinite;
+  }
+  @keyframes tw-blink{
+    0%, 50%{ opacity:1; }
+    50.01%, 100%{ opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .tw-cursor{ animation:none; opacity:1; }
+  }
+
   .hero p.lead{
     font-size:18px;
     line-height:1.65;
@@ -540,6 +557,79 @@
   .social-pill:hover{ border-color:var(--amber); transform:translateY(-2px); }
   .social-pill svg{ width:18px; height:18px; }
 
+  /* ===================== TESTIMONIALS ===================== */
+  .testimonials-wrap{ background:var(--ink-soft); }
+  .testimonials-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
+  }
+  @media (max-width:980px){ .testimonials-grid{ grid-template-columns:1fr; } }
+
+  .testimonial-card{
+    border:1px solid var(--line); border-radius:16px;
+    padding:30px;
+    background:rgba(247,244,236,0.03);
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .testimonial-stars{
+    display:flex; gap:3px;
+  }
+  .testimonial-stars svg{ width:15px; height:15px; color:var(--amber); }
+  .testimonial-card p.quote{
+    font-size:14.5px; line-height:1.75; color:var(--cream); opacity:0.9;
+  }
+  .testimonial-author{
+    display:flex; align-items:center; gap:12px;
+    margin-top:auto;
+    padding-top:6px;
+  }
+  .testimonial-avatar{
+    width:40px; height:40px; border-radius:50%;
+    background:var(--pine);
+    display:flex; align-items:center; justify-content:center;
+    font-family:var(--display); font-weight:600; font-size:14px; color:var(--cream);
+    flex-shrink:0;
+  }
+  .testimonial-author div b{ display:block; font-size:13.5px; font-weight:600; color:var(--cream); }
+  .testimonial-author div span{ font-size:12px; color:var(--steel-light); }
+
+  /* ===================== FAQ ===================== */
+  .faq-wrap{ background:var(--cream); color:var(--ink); }
+  .faq-wrap .section-tag{ color:var(--pine); }
+  .faq-wrap .section-head p{ color:var(--steel); }
+
+  .faq-list{ max-width:820px; }
+  .faq-item{
+    border-bottom:1px solid var(--line-dark);
+  }
+  .faq-item:first-child{ border-top:1px solid var(--line-dark); }
+  .faq-question{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    background:none; border:none; text-align:left; cursor:pointer;
+    padding:24px 4px;
+    font-family:var(--display); font-size:16.5px; font-weight:600; color:var(--ink);
+  }
+  .faq-question .faq-icon{
+    width:22px; height:22px; flex-shrink:0; position:relative;
+  }
+  .faq-question .faq-icon::before, .faq-question .faq-icon::after{
+    content:''; position:absolute; background:var(--pine); border-radius:2px;
+    transition:transform 0.25s ease;
+  }
+  .faq-question .faq-icon::before{ top:50%; left:0; width:100%; height:2px; transform:translateY(-50%); }
+  .faq-question .faq-icon::after{ left:50%; top:0; width:2px; height:100%; transform:translateX(-50%); }
+  .faq-item.open .faq-icon::after{ transform:translateX(-50%) rotate(90deg); opacity:0; }
+
+  .faq-answer{
+    max-height:0; overflow:hidden;
+    transition:max-height 0.3s ease;
+  }
+  .faq-answer p{
+    font-size:14.5px; line-height:1.75; color:var(--steel);
+    padding:0 4px 24px;
+    max-width:680px;
+  }
+  .faq-item.open .faq-answer{ max-height:400px; }
+
   /* ===================== FOOTER ===================== */
   footer{
     background:#0A0F0C;
@@ -647,7 +737,7 @@
     <div class="hero-grid">
       <div>
         <div class="eyebrow">Alaba International Market · Lagos</div>
-        <h1>Stop feeding fuel<br>to your generator.<br><span class="accent">Start running on sun.</span></h1>
+        <h1><span class="tw-line" id="twLine1"></span><br><span class="tw-line" id="twLine2"></span><br><span class="tw-line accent" id="twLine3"></span><span class="tw-cursor" id="twCursor"></span></h1>
         <p class="lead">Debrandy Solar Solutions designs and supplies hybrid power systems and solar generators that keep your home or business running — quiet, no diesel, no NEPA anxiety.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://wa.me/2347018874475?text=Hi%20Debrandy%2C%20I%27d%20like%20a%20free%20consultation%20on%20a%20solar%20system" target="_blank" rel="noopener">
@@ -782,6 +872,145 @@
     </div>
   </section>
 
+  <section class="testimonials-wrap section-pad" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">What clients say</span>
+        <h2>Straight talk from people we've powered.</h2>
+        <p>A few words from homeowners and business owners we've worked with across Lagos.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+          </div>
+          <p class="quote">"They didn't just sell me the biggest system they had — they asked what I actually run and sized it to that. My fridge and lights haven't gone off once since installation."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">TA</div>
+            <div><b>Tosin A.</b><span>Homeowner, Lagos</span></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+          </div>
+          <p class="quote">"Running a salon means my equipment needs to stay on. Debrandy came, checked what I actually use in a day, and the Cola generator has handled it without a single dip."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">BF</div>
+            <div><b>Blessing F.</b><span>Salon owner, Ojo</span></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.9L12 17.8 5.8 21l1.2-6.9-5-4.9 6.9-1L12 2z"/></svg>
+          </div>
+          <p class="quote">"We needed a system that could scale as the business grew. The SAKO setup they recommended let us start small and add capacity later, exactly as they said we could."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">EO</div>
+            <div><b>Emeka O.</b><span>Shop owner, Alaba</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-wrap section-pad" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-tag">Common questions</span>
+        <h2>Frequently asked questions.</h2>
+        <p>Straight answers to what most people ask before they commit to a system. Still unsure? Message us on WhatsApp and we'll walk you through it.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How long do lithium batteries last?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>A good lithium (LiFePO4) battery typically lasts several years and thousands of charge cycles when it's sized correctly and not overworked. Lifespan depends heavily on how the system is designed — an undersized battery pushed beyond its limits daily will wear out much faster than one matched properly to your load.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can solar power an air conditioner?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, but it needs proper sizing. ACs draw a heavy startup load, so the inverter and battery bank both need enough headroom to handle that spike without tripping. This is exactly the kind of detail we check during a load assessment before recommending a system.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Which inverter size do I need?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>It depends entirely on what you're running and how much of it runs at the same time. A small apartment might only need 1–3kVA, while a shop, hotel, or factory could need anywhere from 10kVA to well over 100kW. Rather than guess, message us your appliance list and we'll size it properly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How many panels are required?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Panel count is driven by your battery capacity and how much sunlight you get, not by guesswork. We calculate the panel-to-storage ratio so your panels charge your battery optimally — enough to keep up with your daily usage without oversupplying or underperforming.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can I expand my system later?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — several of our systems, including the SAKO Solar Generator, are built to be expandable. If you're planning to scale up in stages, tell us upfront so we can design the initial setup in a way that supports adding more battery capacity or panels down the line.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What warranty do you offer?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Warranty terms depend on the specific brand and component, since each manufacturer sets its own coverage. We'll confirm the exact warranty for your chosen equipment before you buy, and every battery is inspected for performance and safety before it leaves us.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How long does installation take?
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-answer">
+            <p>A straightforward home installation can often be completed within a day once the system has been designed and components are on-site. Larger commercial or industrial jobs take longer depending on scale. We'll give you a realistic timeline during your consultation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section-pad social-strip" id="contact">
     <div class="container">
       <div class="section-head">
@@ -892,6 +1121,64 @@
       ul.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(14,20,16,0.97);padding:24px;gap:20px;border-bottom:1px solid var(--line);';
     }
   });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem){
+        if(openItem !== item){
+          openItem.classList.remove('open');
+          openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        }
+      });
+      item.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+  });
+
+  // Hero typewriter effect
+  (function(){
+    const lines = [
+      { el: document.getElementById('twLine1'), text: 'Stop feeding fuel' },
+      { el: document.getElementById('twLine2'), text: 'to your generator.' },
+      { el: document.getElementById('twLine3'), text: 'Start running on sun.' }
+    ];
+    const cursor = document.getElementById('twCursor');
+    if(!lines[0].el) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduceMotion){
+      lines.forEach(function(line){ line.el.textContent = line.text; });
+      return;
+    }
+
+    const charDelay = 42;
+    const lineDelay = 260;
+    const startDelay = 900; // wait for preloader to clear
+
+    function typeLine(index){
+      if(index >= lines.length) return;
+      const line = lines[index];
+      let charIndex = 0;
+      // move cursor next to the line currently being typed
+      line.el.insertAdjacentElement('afterend', cursor);
+
+      function typeChar(){
+        if(charIndex <= line.text.length){
+          line.el.textContent = line.text.slice(0, charIndex);
+          charIndex++;
+          setTimeout(typeChar, charDelay);
+        } else {
+          setTimeout(function(){ typeLine(index + 1); }, lineDelay);
+        }
+      }
+      typeChar();
+    }
+
+    setTimeout(function(){ typeLine(0); }, startDelay);
+  })();
 </script>
 <a class="float-whatsapp" href="https://wa.me/2347018874475?text=Hi%20Debrandy%2C%20I%27d%20like%20to%20know%20more%20about%20your%20solar%20solutions" target="_blank" rel="noopener" aria-label="Chat with Debrandy Solar on WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.94.56 3.74 1.52 5.27L2 22l4.96-1.6a9.8 9.8 0 0 0 5.08 1.4c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.6 14.1c-.24.67-1.4 1.28-1.93 1.36-.5.08-1.13.11-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.79-4.16-4.93-4.36-.14-.2-1.18-1.57-1.18-2.99 0-1.43.75-2.13 1.02-2.42.27-.29.58-.36.78-.36h.56c.18 0 .42-.02.65.5.27.6.92 2.11.99 2.27.08.16.13.34.02.55-.1.2-.16.33-.31.5-.16.18-.33.4-.47.54-.16.16-.32.33-.14.65.18.32.83 1.36 1.78 2.2 1.22 1.09 2.26 1.43 2.6 1.59.34.16.54.13.74-.08.2-.21.85-.99 1.08-1.33.23-.34.46-.28.77-.17.31.11 1.97.93 2.31 1.1.34.16.56.25.65.39.08.14.08.78-.16 1.45z"/></svg>
