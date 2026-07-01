@@ -297,6 +297,66 @@
     .float-whatsapp{ bottom:18px; right:18px; width:52px; height:52px; }
     .float-whatsapp svg{ width:26px; height:26px; }
   }
+
+  /* ===================== COMPANY HISTORY ===================== */
+  .history-wrap{ background:var(--ink-soft); }
+  .history-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start; }
+  @media (max-width:980px){ .history-grid{ grid-template-columns:1fr; gap:40px; } }
+
+  .history-text p{ font-size:15.5px; line-height:1.8; color:var(--steel-light); margin-bottom:18px; }
+  .history-text p:last-child{ margin-bottom:0; }
+
+  .timeline{ display:flex; flex-direction:column; }
+  .timeline-item{
+    display:grid; grid-template-columns:64px 1fr; gap:20px;
+    padding-bottom:32px; position:relative;
+  }
+  .timeline-item:last-child{ padding-bottom:0; }
+  .timeline-item::before{
+    content:''; position:absolute; left:31px; top:34px; bottom:0;
+    width:1px; background:var(--line);
+  }
+  .timeline-item:last-child::before{ display:none; }
+  .timeline-year{
+    font-family:var(--mono); font-size:13px; font-weight:600; color:var(--amber);
+    display:flex; align-items:flex-start; justify-content:center;
+    width:64px; height:64px; border-radius:50%;
+    border:1px solid var(--line);
+    background:rgba(247,244,236,0.03);
+    padding-top:22px;
+    text-align:center;
+    flex-shrink:0;
+    z-index:1;
+  }
+  .timeline-content h4{
+    font-family:var(--display); font-size:16.5px; font-weight:600; margin-bottom:8px; padding-top:6px;
+  }
+  .timeline-content p{
+    font-size:14px; color:var(--steel-light); line-height:1.65;
+  }
+
+  /* ===================== COUNTER STATS ===================== */
+  .counter-row{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;
+    margin-top:56px;
+    border-top:1px solid var(--line);
+    padding-top:44px;
+  }
+  @media (max-width:780px){ .counter-row{ grid-template-columns:1fr 1fr; row-gap:36px; } }
+
+  .counter-item{ text-align:left; }
+  .counter-item .counter-num{
+    font-family:var(--display); font-size:clamp(2rem, 3.2vw, 2.8rem);
+    font-weight:700; color:var(--cream); letter-spacing:-0.01em;
+    display:flex; align-items:baseline; gap:2px;
+  }
+  .counter-item .counter-num .counter-suffix{
+    font-size:0.55em; color:var(--amber); font-weight:600;
+  }
+  .counter-item .counter-label{
+    font-family:var(--mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--steel-light); margin-top:8px;
+  }
 </style>
 </head>
 <body>
@@ -365,6 +425,61 @@
         <p>That belief came from watching the industry get it backwards too often — installers stacking panels without checking if the battery could store what they generate, or selling inverters that buckle the moment a fridge and AC run at once. The result is systems that look complete on day one and fail within months.</p>
         <div class="pull-quote">"A well-designed 6kVA system can outperform a poorly planned 10kVA setup when the architecture is right."</div>
         <p>Every battery delivered to a client is inspected before it leaves Alaba — checked for performance and safety, not just packaged and sent. That's the standard the business runs on: not just selling equipment, but delivering power people can actually trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="history-wrap section-pad">
+    <div class="container history-grid">
+      <div class="history-text">
+        <span class="section-tag">Our story</span>
+        <h2 style="font-family:var(--display); font-size:clamp(1.8rem,2.8vw,2.4rem); font-weight:700; letter-spacing:-0.01em; margin-bottom:24px; line-height:1.15;">From one honest sizing job to a name Alaba trusts.</h2>
+        <p>Debrandy Solar Solutions didn't start with a showroom or a big launch — it started with Jeremiah fixing what other installers kept getting wrong: systems that looked fine on paper but failed the first time a fridge and AC ran together.</p>
+        <p>Word spread the way it does at Alaba — one client telling another that the sizing was honest, the batteries were inspected, and the system actually held up. That's still how most new clients find us today.</p>
+        <p>Since then, the work has grown from single power tanks for apartments to full hybrid installations for shops, hotels, and growing businesses across Lagos — with the same load-first approach on every job, no matter the size.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">Early days</div>
+          <div class="timeline-content">
+            <h4>Getting started at Alaba</h4>
+            <p>Jeremiah began supplying and correcting solar installations at Alaba International Market, focused on proper load-first sizing rather than pre-packaged setups.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Growth</div>
+          <div class="timeline-content">
+            <h4>Expanding into full installations</h4>
+            <p>Beyond supplying power tanks and generators, the business grew into full hybrid system design and installation for homes and small businesses.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">Today</div>
+          <div class="timeline-content">
+            <h4>Serving homes and businesses across Lagos</h4>
+            <p>Debrandy Solar Solutions now supplies and installs systems ranging from single apartments to commercial and industrial-scale hybrid setups.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="counter-row" style="grid-column:1 / -1;">
+        <div class="counter-item">
+          <div class="counter-num"><span class="counter-value" data-target="5">0</span><span class="counter-suffix">+</span></div>
+          <div class="counter-label">Years in business</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-num"><span class="counter-value" data-target="200">0</span><span class="counter-suffix">+</span></div>
+          <div class="counter-label">Systems supplied &amp; installed</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-num"><span class="counter-value" data-target="19">0</span><span class="counter-suffix">+</span></div>
+          <div class="counter-label">Trusted brands stocked</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-num"><span class="counter-value" data-target="100">0</span><span class="counter-suffix">%</span></div>
+          <div class="counter-label">Batteries inspected before delivery</div>
+        </div>
       </div>
     </div>
   </section>
@@ -521,6 +636,43 @@
       ul.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(14,20,16,0.97);padding:24px;gap:20px;border-bottom:1px solid var(--line);';
     }
   });
+
+  // Counter count-up animation, triggered when scrolled into view
+  (function(){
+    const counters = document.querySelectorAll('.counter-value');
+    if(!counters.length) return;
+
+    const animateCounter = (el) => {
+      const target = parseInt(el.getAttribute('data-target'), 10) || 0;
+      const duration = 1400;
+      const startTime = performance.now();
+      function tick(now){
+        const progress = Math.min((now - startTime) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if(progress < 1){
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = target;
+        }
+      }
+      requestAnimationFrame(tick);
+    };
+
+    if('IntersectionObserver' in window){
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if(entry.isIntersecting){
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      counters.forEach((c) => observer.observe(c));
+    } else {
+      counters.forEach((c) => animateCounter(c));
+    }
+  })();
 </script>
 
 </body>
